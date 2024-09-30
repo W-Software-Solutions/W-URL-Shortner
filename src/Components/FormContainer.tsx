@@ -24,7 +24,7 @@ const FormContainer: React.FunctionComponent<IFormContainerProps> = (props) => {
 
   return(
     <div className='container mx-auto p-2 bg-cyan-700'>
-        <div className='bg-banner my-8 rounded-xl bg-cover bg-center'>
+        <div className="bg-[url('./src/assets/bg.jpg')] my-8 rounded-xl bg-cover bg-center">
             <div className='w-full h-full rounded-xl p-20 '>
                 <h1 className= 'text-white font-bold text-center text-4xl pb-3'> URL SHORTNER </h1>
                 <p className='text-white text-center pb-2 text-xl font-extralight'>Paste your untidy link to shorten it...</p>
