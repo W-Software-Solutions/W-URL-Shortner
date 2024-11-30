@@ -4,6 +4,12 @@ import { Link } from 'react-router-dom';
 interface IHeaderProps {}
 
 const Header: React.FunctionComponent<IHeaderProps> = () => {
+    const [menuOpen, setMenuOpen] = React.useState(false);
+
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen);
+    };
+
     return (
         <div className="bg-slate-800">
             <div className="container p-2 mx-auto">
@@ -14,10 +20,10 @@ const Header: React.FunctionComponent<IHeaderProps> = () => {
                     </div>
 
                     {/* Navigation Links */}
-                    <div className="hidden md:flex space-x-6 mr-20	">
+                    <div className="hidden md:flex space-x-6 mr-20">
                         <Link
                             to="/about"
-                            className="text-lg text-gray-200 hover:text-black hover:bg-sky-700 rounded-lg px-3 hover:font-semibold transition duration-300 "
+                            className="text-lg text-gray-200 hover:text-black hover:bg-sky-700 rounded-lg px-3 hover:font-semibold transition duration-300"
                         >
                             About
                         </Link>
@@ -44,8 +50,8 @@ const Header: React.FunctionComponent<IHeaderProps> = () => {
                     {/* Mobile Menu Button */}
                     <div className="md:hidden">
                         <button
+                            onClick={toggleMenu}
                             className="text-gray-200 focus:outline-none hover:text-white transition duration-300"
-                            id="menu-btn"
                         >
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -66,35 +72,40 @@ const Header: React.FunctionComponent<IHeaderProps> = () => {
                 </nav>
 
                 {/* Mobile Navigation */}
-                <div
-                    id="menu"
-                    className="hidden flex-col space-y-4 mt-4 text-center md:hidden bg-slate-700 p-4 rounded-md"
-                >
-                    <Link
-                        to="/about"
-                        className="text-lg text-gray-200 hover:text-white transition duration-300"
-                    >
-                        About
-                    </Link>
-                    <Link
-                        to="/blog"
-                        className="text-lg text-gray-200 hover:text-white transition duration-300"
-                    >
-                        Blog
-                    </Link>
-                    <Link
-                        to="/contact"
-                        className="text-lg text-gray-200 hover:text-white transition duration-300"
-                    >
-                        Contact
-                    </Link>
-                    <Link
-                        to="/services"
-                        className="text-lg text-gray-200 hover:text-white transition duration-300"
-                    >
-                        Services
-                    </Link>
-                </div>
+                {menuOpen && (
+                    <div className="flex flex-col space-y-4 mt-4 text-center md:hidden bg-slate-700 p-4 rounded-md">
+                        <Link
+                            to="/about"
+                            className="text-lg text-gray-200 hover:text-black hover:bg-sky-700 rounded-lg px-3 hover:font-semibold transition duration-300"
+                            
+                            onClick={() => setMenuOpen(false)} // Close menu on click
+                        >
+                            About
+                        </Link>
+                        <Link
+                            to="/blog"
+                            className="text-lg text-gray-200 hover:text-black hover:bg-sky-700 rounded-lg px-3 hover:font-semibold transition duration-300"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            Blog
+                        </Link>
+                        <Link
+                            to="/contact"
+                            className="text-lg text-gray-200 hover:text-black hover:bg-sky-700 rounded-lg px-3 hover:font-semibold transition duration-300"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            Contact
+                        </Link>
+                        <Link
+                            to="/services"
+                            // className="text-lg text-gray-200 hover:text-white transition duration-300"
+                            className="text-lg text-gray-200 hover:text-black hover:bg-sky-700 rounded-lg px-3 hover:font-semibold transition duration-300"
+                            onClick={() => setMenuOpen(false)}
+                        >
+                            Services
+                        </Link>
+                    </div>
+                )}
             </div>
         </div>
     );
