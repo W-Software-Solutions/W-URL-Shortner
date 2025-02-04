@@ -17,7 +17,7 @@ const Blog: React.FC = () => {
                 </h2>
             </div>
 
-            <div className="mx-40 p-5">
+            <div className="flex flex-col p-10">
 
                 <div className='grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-5 mt-3 '>
                     <Link to='/blog/1' className='rounded-2xl h-full hover:scale-105 transition-all hover:shadow-xl hover:border-solid hover:border-4 hover:border-slate-800 bg-sky-400 shadow-2xl'>
